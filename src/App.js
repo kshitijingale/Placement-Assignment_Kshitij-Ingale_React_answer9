@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import HeroSection from './components/HeroSection';
+import context from './context/context';
+import { useState } from 'react';
+import ThemeToggler from './components/ThemeToggler';
 
 function App() {
+  const themeMode = useState("light")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <context.Provider value={themeMode}>
+        <ThemeToggler />
+        <HeroSection />
+      </context.Provider>
+    </>
   );
 }
 
